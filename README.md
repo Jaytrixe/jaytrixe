@@ -1,16 +1,22 @@
-## Hi there 👋
+👋 Hi, I'm Jaytrixe
+Cybersecurity Learner | Ethical Hacking | Linux
 
-<!--
-**Jaytrixe/jaytrixe** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Welcome to my corner of GitHub! I'm building practical skills in cybersecurity, networking, Linux, and ethical hacking.
 
-Here are some ideas to get you started:
+🎯 Current Focus
+- Cybersecurity fundamentals
+- Networking and Linux
+- Ethical hacking labs
+- Python and security scripting
+🛠️ Tools I'm Exploring
+Kali Linux · Nmap · Wireshark · Burp Suite · Git
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+🧪 My Projects
+
+Documenting my labs, experiments, and security learning journey here.
+
+📈 My Goal
+
+Build practical skills and become a cybersecurity professional.
+
+Breaking systems in labs. Building skills for defense.
