@@ -1,0 +1,957 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050914">
+  <meta name="description" content="Jaytrixe's portfolio exploring cybersecurity, web development, and interactive media technology.">
+  <meta name="author" content="Jaytrixe">
+  <title>Jaytrixe | Cybersecurity • Web • Interactive Media</title>
+
+  <style>
+    :root {
+      --background: #050914;
+      --surface: #0b1424;
+      --surface-light: #101d31;
+      --border: #1b3552;
+      --text: #e5efff;
+      --muted: #91a7c4;
+      --accent: #00d9ff;
+      --accent-secondary: #6685ff;
+      --glow: rgba(0, 217, 255, 0.16);
+      --content-width: 1100px;
+      --radius: 14px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 75% 0%,
+          rgba(0, 145, 255, 0.12), transparent 36rem),
+        radial-gradient(ellipse at 0% 50%,
+          rgba(66, 74, 190, 0.08), transparent 35rem),
+        var(--background);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(var(--content-width), calc(100% - 3rem));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 100;
+      padding: 0.7rem 1rem;
+      background: var(--accent);
+      color: #04101a;
+      border-radius: 8px;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 9, 20, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .navbar {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 13px;
+      height: 13px;
+      display: inline-block;
+      border-radius: 4px 4px 4px 1px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(0, 217, 255, 0.7);
+      transform: rotate(-12deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: clamp(0.8rem, 2.5vw, 1.7rem);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.88rem;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Shared elements */
+
+    main section {
+      padding-block: clamp(3.5rem, 7vw, 6rem);
+    }
+
+    .section-kicker {
+      margin: 0 0 0.65rem;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p {
+      overflow-wrap: anywhere;
+    }
+
+    h2 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+    }
+
+    .section-heading {
+      margin-bottom: 2rem;
+    }
+
+    .accent-text {
+      color: var(--accent);
+      text-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 48px;
+      padding: 0.75rem 1.3rem;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: var(--accent);
+      color: #04101a;
+      font-size: 0.92rem;
+      font-weight: 800;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px rgba(0, 217, 255, 0.24);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .button-outline:hover {
+      background: var(--glow);
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 3rem;
+      padding-top: clamp(4rem, 9vw, 7rem);
+      padding-bottom: 4rem;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #00f5a0;
+      box-shadow: 0 0 12px rgba(0, 245, 160, 0.7);
+    }
+
+    h1 {
+      margin: 0 0 1.4rem;
+      color: #fff;
+      font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+      font-weight: 850;
+      letter-spacing: -0.065em;
+      line-height: 1.04;
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      margin: 0 0 1.8rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.12rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    /* Terminal visual */
+
+    .terminal {
+      overflow: hidden;
+      border: 1px solid #1b4265;
+      border-radius: var(--radius);
+      background: rgba(7, 15, 29, 0.95);
+      box-shadow: 0 0 55px rgba(0, 145, 255, 0.09);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--border);
+      background: #0d192b;
+    }
+
+    .terminal-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #30445b;
+    }
+
+    .terminal-title {
+      margin-left: auto;
+      color: #6e8cac;
+      font-size: 0.72rem;
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      color: #a9c0dc;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.82rem;
+      line-height: 2;
+    }
+
+    .terminal-line {
+      display: block;
+    }
+
+    .terminal-prompt {
+      color: var(--accent);
+    }
+
+    .terminal-output {
+      color: #7d98b8;
+    }
+
+    .terminal-highlight {
+      color: #76f7c4;
+    }
+
+    .terminal-note {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: #718ba9;
+      font-size: 0.75rem;
+    }
+
+    /* Areas of interest */
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .focus-card {
+      padding: 1.6rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #0c192b, #080f1c);
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .focus-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .focus-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 1.2rem;
+      border: 1px solid #214767;
+      border-radius: 10px;
+      background: rgba(0, 217, 255, 0.08);
+      color: var(--accent);
+      font-family: Consolas, monospace;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .focus-card h3 {
+      margin: 0 0 0.6rem;
+      color: #fff;
+      font-size: 1.15rem;
+    }
+
+    .focus-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: #cfe2fb;
+      font-size: 0.88rem;
+      transition: border-color 180ms ease, color 180ms ease;
+    }
+
+    .skill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      display: flex;
+      min-height: 285px;
+      flex-direction: column;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #0d192b, #080f1c);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: #23618a;
+    }
+
+    .project-number {
+      margin-bottom: 1.1rem;
+      color: var(--accent);
+      font-family: Consolas, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+    }
+
+    .project-card h3 {
+      margin: 0 0 0.7rem;
+      color: #fff;
+      font-size: 1.18rem;
+      line-height: 1.4;
+    }
+
+    .project-card p {
+      margin: 0 0 1.2rem;
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-tags span {
+      padding: 0.2rem 0.55rem;
+      border-radius: 5px;
+      background: rgba(0, 217, 255, 0.07);
+      color: #79cfe5;
+      font-size: 0.72rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 750;
+    }
+
+    /* Learning statement */
+
+    .mission {
+      padding: clamp(1.7rem, 5vw, 3rem);
+      border: 1px solid #194265;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 100% 0%,
+          rgba(0, 217, 255, 0.09), transparent 25rem),
+        var(--surface);
+    }
+
+    .mission blockquote {
+      margin: 0;
+      color: #eaf5ff;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.45;
+    }
+
+    .mission p {
+      margin: 1rem 0 0;
+      color: var(--muted);
+    }
+
+    /* Contact and socials */
+
+    .contact {
+      border-top: 1px solid var(--border);
+      background: rgba(7, 14, 26, 0.65);
+      text-align: center;
+    }
+
+    .contact-copy {
+      max-width: 600px;
+      margin: 0.9rem auto 2rem;
+      color: var(--muted);
+    }
+
+    .social-matrix {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin: 2rem auto 0;
+    }
+
+    .social-card {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 46px;
+      padding: 0.7rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: transform 180ms ease, border-color 180ms ease,
+        background 180ms ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: rgba(0, 217, 255, 0.08);
+    }
+
+    .social-note {
+      margin-top: 1.5rem;
+      color: #6f89a7;
+      font-family: Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding-block: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: #71839c;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .site-footer span {
+      color: var(--accent);
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 850px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .terminal {
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .focus-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(var(--content-width), calc(100% - 2rem));
+      }
+
+      .navbar {
+        min-height: 68px;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-block: 0.8rem;
+      }
+
+      .nav-links {
+        gap: 0.85rem;
+      }
+
+      .nav-links a {
+        font-size: 0.79rem;
+      }
+
+      .focus-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-card {
+        padding: 1.35rem;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .social-matrix {
+        gap: 0.65rem;
+      }
+
+      .social-card {
+        padding-inline: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="container navbar" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Jaytrixe home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>JAYTRIXE<span class="accent-text">.IO</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#focus">Interests</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">
+          <span class="status-dot" aria-hidden="true"></span>
+          Learning • Building • Exploring
+        </div>
+
+        <h1>
+          Exploring technology.<br>
+          Building a <span class="accent-text">digital future.</span>
+        </h1>
+
+        <p class="hero-copy">
+          Hey, I'm Jaytrixe. I'm developing my skills across cybersecurity,
+          web development, and interactive media technology. I'm documenting
+          what I learn, experimenting with ideas, and building projects
+          one step at a time.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="button">
+            Explore Projects <span aria-hidden="true">↗</span>
+          </a>
+
+          <a href="#contact" class="button button-outline">
+            Find Me Online
+          </a>
+        </div>
+      </div>
+
+      <!-- Decorative terminal: visual only -->
+      <div class="terminal" aria-label="Decorative terminal showing learning topics">
+        <div class="terminal-bar">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-title">jaytrixe@learning-lab</span>
+        </div>
+
+        <div class="terminal-body">
+          <span class="terminal-line">
+            <span class="terminal-prompt">jaytrixe@lab:~$</span> whoami
+          </span>
+          <span class="terminal-line terminal-highlight">Cybersecurity learner</span>
+
+          <br>
+
+          <span class="terminal-line">
+            <span class="terminal-prompt">jaytrixe@lab:~$</span> interests
+          </span>
+          <span class="terminal-line terminal-output">01 / Cybersecurity</span>
+          <span class="terminal-line terminal-output">02 / Web development</span>
+          <span class="terminal-line terminal-output">03 / Interactive media</span>
+
+          <br>
+
+          <span class="terminal-line">
+            <span class="terminal-prompt">jaytrixe@lab:~$</span> status
+          </span>
+          <span class="terminal-line terminal-highlight">Learning in progress_</span>
+
+          <div class="terminal-note">
+            ETHICAL PRACTICE // CONTINUOUS LEARNING
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THREE AREAS -->
+    <section class="container" id="focus">
+      <div class="section-heading">
+        <p class="section-kicker">// AREAS OF EXPLORATION</p>
+        <h2>Three fields. One digital journey.</h2>
+        <p class="section-intro">
+          Exploring how systems work, how digital experiences are built,
+          and how technology can make ideas interactive.
+        </p>
+      </div>
+
+      <div class="focus-grid">
+        <article class="focus-card">
+          <div class="focus-icon" aria-hidden="true">01</div>
+          <h3>Cybersecurity</h3>
+          <p>
+            Learning security fundamentals, networking, Linux, ethical
+            hacking concepts, and defensive security through authorized labs.
+          </p>
+        </article>
+
+        <article class="focus-card">
+          <div class="focus-icon" aria-hidden="true">02</div>
+          <h3>Web Development</h3>
+          <p>
+            Exploring HTML, CSS, JavaScript, responsive layouts, and
+            the process of creating useful websites and web applications.
+          </p>
+        </article>
+
+        <article class="focus-card">
+          <div class="focus-icon" aria-hidden="true">03</div>
+          <h3>Interactive Media</h3>
+          <p>
+            Exploring the connection between design, digital storytelling,
+            user interaction, multimedia, and engaging digital experiences.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="container" id="skills">
+      <div class="section-heading">
+        <p class="section-kicker">// CURRENT LEARNING TOOLKIT</p>
+        <h2>Skills &amp; technologies</h2>
+        <p class="section-intro">
+          Tools and topics I'm exploring as I build my technical foundation.
+          This list represents my learning interests, not a claim of mastery.
+        </p>
+      </div>
+
+      <div class="skills-grid" aria-label="Technologies and learning topics">
+        <span class="skill">Linux</span>
+        <span class="skill">Networking Fundamentals</span>
+        <span class="skill">Kali Linux</span>
+        <span class="skill">Nmap</span>
+        <span class="skill">Wireshark</span>
+        <span class="skill">Burp Suite</span>
+        <span class="skill">Python</span>
+        <span class="skill">HTML &amp; CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Web Security</span>
+        <span class="skill">Git &amp; GitHub</span>
+        <span class="skill">Responsive Design</span>
+        <span class="skill">UI/UX Fundamentals</span>
+        <span class="skill">Digital Storytelling</span>
+        <span class="skill">Interactive Experiences</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="container" id="projects">
+      <div class="section-heading">
+        <p class="section-kicker">// THE WORKBENCH</p>
+        <h2>Projects &amp; experiments</h2>
+        <p class="section-intro">
+          A space for documenting my progress across security, development,
+          and interactive media. I'll add project links as work is completed.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <span class="project-number">PROJECT_001</span>
+          <h3>Cybersecurity Learning Journal</h3>
+          <p>
+            A structured record of security fundamentals, networking
+            exercises, Linux practice, and lessons learned in authorized labs.
+          </p>
+          <div class="project-tags">
+            <span>Cybersecurity</span>
+            <span>Linux</span>
+            <span>Documentation</span>
+          </div>
+          <a class="project-link"
+             href="https://github.com/jaytrixe?tab=repositories"
+             target="_blank" rel="noopener noreferrer">
+            Explore GitHub repositories ↗
+          </a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-number">PROJECT_002</span>
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            This portfolio: a responsive digital home for my learning journey,
+            interests, future projects, and creative technology experiments.
+          </p>
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Web Design</span>
+          </div>
+          <a class="project-link"
+             href="https://jaytrixe.github.io"
+             target="_blank" rel="noopener noreferrer">
+            Visit live portfolio ↗
+          </a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-number">PROJECT_003</span>
+          <h3>Interactive Media Experiments</h3>
+          <p>
+            A future collection of interactive web concepts, multimedia
+            experiments, and digital storytelling projects.
+          </p>
+          <div class="project-tags">
+            <span>Interactive Media</span>
+            <span>Creative Tech</span>
+            <span>Web</span>
+          </div>
+          <a class="project-link"
+             href="https://github.com/jaytrixe?tab=repositories"
+             target="_blank" rel="noopener noreferrer">
+            View repositories ↗
+          </a>
+        </article>
+      </div>
+
+      <p class="section-intro" style="margin-top: 1.5rem; font-size: 0.85rem;">
+        Note: The project descriptions above are starting points. Update them
+        as you complete real projects, and link each card to its specific
+        repository or demonstration.
+      </p>
+    </section>
+
+    <!-- MISSION -->
+    <section class="container" id="mission">
+      <div class="mission">
+        <p class="section-kicker">// THE MINDSET</p>
+        <blockquote>
+          “Understand the system. Build with purpose.
+          Use knowledge to make the digital world better.”
+        </blockquote>
+        <p>
+          My goal is to keep learning, practice responsibly, and turn
+          curiosity into useful skills and meaningful digital work.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT AND SOCIAL LINKS -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="section-kicker">// ESTABLISH CONNECTION</p>
+        <h2>Let's connect <span class="accent-text">online.</span></h2>
+
+        <p class="contact-copy">
+          Follow my journey, explore my repositories, and connect with me
+          as I grow across cybersecurity, web development, and interactive media.
+        </p>
+
+        <div class="social-matrix">
+          <a class="social-card"
+             href="https://github.com/jaytrixe"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Visit Jaytrixe on GitHub">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+
+          <a class="social-card"
+             href="https://www.instagram.com/jaytrixe"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Visit Jaytrixe on Instagram">
+            Instagram <span aria-hidden="true">↗</span>
+          </a>
+
+          <a class="social-card"
+             href="https://www.facebook.com/share/1FUETa5avD/"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Connect with Jaytrixe on Facebook">
+            Facebook <span aria-hidden="true">↗</span>
+          </a>
+
+          <a class="social-card"
+             href="https://www.tiktok.com/@jaytrixe"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Visit Jaytrixe on TikTok">
+            TikTok <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <p class="social-note">
+          &gt; KEEP_LEARNING(); &nbsp; BUILD_WITH_PURPOSE();
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <span id="year"></span> Jaytrixe.
+        Built with curiosity, code, and a commitment to continuous learning.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
